@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 direction = Vector2.zero;
 
     private Animator animator;
-    private Rigidbody2D rigidbody2D;
+    private new Rigidbody2D rigidbody2D;
     private SpriteRenderer spriteRenderer;
 
     [SerializeField] private float speed = 2;
