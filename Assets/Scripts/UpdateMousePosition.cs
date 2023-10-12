@@ -8,9 +8,10 @@ public class UpdateMousePosition : MonoBehaviour
     public MousePosSO mousePosition;
     public GameObject customCursor;
 
-    private void Start()
+    private void Awake()
     {
         Cursor.visible = false;
+        mousePosition.mainCamera = Camera.main;
     }
 
     // Update is called once per frame

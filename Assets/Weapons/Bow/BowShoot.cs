@@ -7,6 +7,6 @@ public class BowShoot : BaseShoot
     public GameObject arrow;
     public override void Shoot()
     {
-        Instantiate(arrow, transform.position + transform.up, transform.rotation);
+        Instantiate(arrow, transform.position + transform.up * 0.1f, transform.rotation);
     }
 }

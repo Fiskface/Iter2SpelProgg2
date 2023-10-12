@@ -13,7 +13,10 @@ public abstract class WeaponState
     protected WeaponBehaviour weapon;
     
     // Start is called before the first frame update
-    public virtual void Awake() {}
+    public virtual void Awake(WeaponBehaviour weapon)
+    {
+        this.weapon = weapon;
+    }
 
     // Update is called once per frame
     public virtual void Start() {}

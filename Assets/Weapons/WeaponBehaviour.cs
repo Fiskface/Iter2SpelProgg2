@@ -13,7 +13,7 @@ public class WeaponBehaviour : MonoBehaviour
 
     private WeaponState currentState = null;
     private List<WeaponState> states;
-    private GameObject player;
+    [HideInInspector] public GameObject player;
 
     private void OnValidate()
     {
@@ -23,7 +23,16 @@ public class WeaponBehaviour : MonoBehaviour
             state.OnValidate(this);
         }
     }
-    
+
+    private void Awake()
+    {
+        states = new List<WeaponState>(){canShootState, shootCooldownState, reloadState};
+        foreach (var state in states)
+        {
+            state.Awake(this);
+        }
+    }
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");

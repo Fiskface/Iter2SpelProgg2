@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "MousePosition", menuName = "ScriptableObjects/MousePosition")]
 public class MousePosSO : ScriptableObject
 {
-    private Camera mainCamera;
+    public Camera mainCamera;
     public Vector3 mousePosition { get; private set; } = Vector3.zero;
 
     private void OnEnable()
