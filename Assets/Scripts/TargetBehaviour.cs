@@ -5,5 +5,6 @@ using UnityEngine.Events;
 
 public class TargetBehaviour : MonoBehaviour
 {
+    public bool allied;
     public UnityAction<int> hit = delegate {};
 }
