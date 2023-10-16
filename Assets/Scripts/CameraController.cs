@@ -6,7 +6,7 @@ public class CameraController : MonoBehaviour
 {
     public Transform player;
     private Camera mainCamera;
-    private Vector3 target, mousePos, refVel, shakeOffset, shakeVector;
+    private Vector3 target, mousePos, refVel, shakeOffset, shakeVector, shakeRandomVector;
     private float cameraDist = 2f, smoothTime = 0.1f, zStart, shakeMag, shakeTimeEnd;
     private bool shaking;
 
@@ -55,10 +55,11 @@ public class CameraController : MonoBehaviour
         transform.position = tempPos;
     }
 
-    private void Shake(Vector3 direction, float magnitude, float length)
+    public void Shake(Vector3 direction, float magnitude, float length)
     {
         shaking = true;
         shakeVector = direction;
+        shakeRandomVector = Random.Range(-0.3f, 0.3f) * magnitude * new Vector3(direction.y, -direction.x, direction.z);
         shakeMag = magnitude;
         shakeTimeEnd = Time.time + length;
     }
@@ -72,6 +73,7 @@ public class CameraController : MonoBehaviour
         }
 
         Vector3 tempOffset = shakeVector;
+        tempOffset += shakeRandomVector;
         tempOffset *= shakeMag;
         return tempOffset;
     }
