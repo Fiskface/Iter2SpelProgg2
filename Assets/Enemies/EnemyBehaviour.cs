@@ -6,10 +6,29 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour
 {
     private TargetBehaviour target;
+    public EnemyIdleState idleState = new EnemyIdleState();
+
+    private EnemyState currentState;
+    private List<EnemyState> states;
+
+    private void OnValidate()
+    {
+        states = new List<EnemyState>(){idleState};
+        foreach (var state in states)
+        {
+            state.OnValidate(this);
+        }
+    }
 
     private void Awake()
     {
         target = GetComponent<TargetBehaviour>();
+        
+        states = new List<EnemyState>(){idleState};
+        foreach (var state in states)
+        {
+            state.Awake(this);
+        }
     }
 
     void Start()
@@ -35,6 +54,6 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void OnHit(int damage)
     {
-        
+        currentState.OnHit(damage);
     }
 }
