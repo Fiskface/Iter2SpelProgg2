@@ -5,8 +5,11 @@ using UnityEngine;
 public class BowShoot : BaseShoot
 {
     public GameObject arrow;
-    public override void Shoot()
+    public override void Shoot(int damage)
     {
-        Instantiate(arrow, transform.position + transform.up * 0.1f, transform.rotation);
+        var arrowBeh = Instantiate(arrow, transform.position + transform.up * 0.1f, transform.rotation)
+            .GetComponent<ArrowBehaviour>();
+        arrowBeh.damage = damage;
+        arrowBeh.allied = true;
     }
 }

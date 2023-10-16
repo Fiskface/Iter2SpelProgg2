@@ -10,6 +10,8 @@ public class ArrowBehaviour : MonoBehaviour
     private Rigidbody2D rb;
 
     public int damage = 1;
+
+    public bool allied;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,10 +27,15 @@ public class ArrowBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(TryGetComponent<TargetBehaviour>(out TargetBehaviour target))
+        if(other.TryGetComponent<TargetBehaviour>(out TargetBehaviour target))
         {
+            if (allied == target.allied) return;
             target.hit(damage);
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }

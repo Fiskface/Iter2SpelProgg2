@@ -98,12 +98,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9f4f5a90537f80469cb3d898ac72e63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 1
   mousePos: {fileID: 11400000, guid: b3bd06871a12b1e47867ffa0ce76ace6, type: 2}
   canShootState:
     shoot: {fileID: 7880867183059338863}
   shootCooldownState:
     cooldownTime: 0.5
+  player: {fileID: 0}
 --- !u!114 &7880867183059338863
 MonoBehaviour:
   m_ObjectHideFlags: 0

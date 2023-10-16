@@ -25,7 +25,7 @@ public class CanShootState : WeaponState
     {
         if (Input.GetButton("Fire1"))
         {
-            shoot.Shoot();
+            shoot.Shoot(weapon.damage);
             weapon.Transit(weapon.shootCooldownState);
         }
     }

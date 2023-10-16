@@ -9,7 +9,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void Awake()
     {
-        
+        target = GetComponent<TargetBehaviour>();
     }
 
     void Start()
