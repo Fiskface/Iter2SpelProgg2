@@ -57,8 +57,7 @@ MonoBehaviour:
     speed: 3
   rb: {fileID: 0}
   sr: {fileID: 0}
-  distanceToPlayer: 0
-  canSeePlayer: 0
+  health: {fileID: 0}
 --- !u!114 &382849341266551370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,7 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9056604, g: 0.08885722, b: 0.11165867, a: 1}
+  m_Color: {r: 0.9056604, g: 0.08885722, b: 0.11165867, a: 0.6862745}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -332,7 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.6862745}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -407,8 +406,8 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: -1390901867
-  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!114 &2657488209686144811
 MonoBehaviour:

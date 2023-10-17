@@ -14,8 +14,6 @@ public class EnemyBehaviour : MonoBehaviour
     [HideInInspector] public Health health;
     
     private GameObject player;
-    [HideInInspector] public float distanceToPlayer;
-    [HideInInspector] public bool canSeePlayer;
         
     private EnemyState currentState;
     private List<EnemyState> states;
@@ -56,21 +54,6 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //TODO: Skapa return funktion så dom som vill kan kräva beräkningen
-        distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-        LayerMask mask = LayerMask.GetMask("Default");
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, 
-            player.transform.position - transform.position, distanceToPlayer, mask);
-
-        if (hit.collider.CompareTag("Player"))
-        {
-            canSeePlayer = true;
-        }
-        else
-        {
-            canSeePlayer = false;
-        }
-        
         currentState.Update();
     }
     
@@ -95,5 +78,28 @@ public class EnemyBehaviour : MonoBehaviour
     {
         currentState.OnHit(damage);
         health.changeHealth(-damage);
+    }
+
+    public float GetDistanceToPlayer()
+    {
+        return Vector3.Distance(transform.position, player.transform.position);
+    }
+    
+    public bool GetPlayerInLineOfSight()
+    {
+        LayerMask mask = LayerMask.GetMask("Default");
+
+        var timer = Time.time;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, 
+            player.transform.position - transform.position, Mathf.Infinity, mask);
+
+        if (hit.collider.CompareTag("Player"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

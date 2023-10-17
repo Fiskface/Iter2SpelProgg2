@@ -9,6 +9,8 @@ public class EnemyPatrolState : EnemyState
     
     private Vector3 direction;
     private float timer;
+
+    private bool playerInLineOfSight;
     
     public override void Start()
     {
@@ -52,12 +54,13 @@ public class EnemyPatrolState : EnemyState
     
     public override void Update()
     {
+        playerInLineOfSight = enemy.GetPlayerInLineOfSight();
+        
         if (timer <= 0)
         {
             enemy.Transit(enemy.idleState);
         }
         timer -= Time.deltaTime;
-        
     }
 
     public override void OnHit(int damage)
