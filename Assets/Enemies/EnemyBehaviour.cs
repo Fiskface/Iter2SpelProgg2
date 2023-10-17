@@ -11,6 +11,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public SpriteRenderer sr;
+    [HideInInspector] public Health health;
     
     private GameObject player;
     [HideInInspector] public float distanceToPlayer;
@@ -33,6 +34,7 @@ public class EnemyBehaviour : MonoBehaviour
         target = GetComponent<TargetBehaviour>();
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        health = GetComponent<Health>();
         
         states = new List<EnemyState>(){idleState, patrolState};
         foreach (var state in states)
@@ -54,6 +56,7 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //TODO: Skapa return funktion så dom som vill kan kräva beräkningen
         distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
         LayerMask mask = LayerMask.GetMask("Default");
         RaycastHit2D hit = Physics2D.Raycast(transform.position, 
@@ -91,5 +94,6 @@ public class EnemyBehaviour : MonoBehaviour
     private void OnHit(int damage)
     {
         currentState.OnHit(damage);
+        health.changeHealth(-damage);
     }
 }

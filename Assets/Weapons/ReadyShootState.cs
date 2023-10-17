@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class CanShootState : WeaponState
+public class ReadyShootState : WeaponState
 {
     public BaseShoot shoot;
     public override void Start()

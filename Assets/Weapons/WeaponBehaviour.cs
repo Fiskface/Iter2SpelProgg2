@@ -2,12 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class WeaponBehaviour : MonoBehaviour
 {
     public int damage;
     public MousePosSO mousePos;
-    public CanShootState canShootState = new CanShootState();
+    public ReadyShootState readyShootState = new ReadyShootState();
     public ShootCooldownState shootCooldownState = new ShootCooldownState();
     public ReloadState reloadState = new ReloadState();
 
@@ -17,7 +18,7 @@ public class WeaponBehaviour : MonoBehaviour
 
     private void OnValidate()
     {
-        states = new List<WeaponState>(){canShootState, shootCooldownState, reloadState};
+        states = new List<WeaponState>(){readyShootState, shootCooldownState, reloadState};
         foreach (var state in states)
         {
             state.OnValidate(this);
@@ -26,7 +27,7 @@ public class WeaponBehaviour : MonoBehaviour
 
     private void Awake()
     {
-        states = new List<WeaponState>(){canShootState, shootCooldownState, reloadState};
+        states = new List<WeaponState>(){readyShootState, shootCooldownState, reloadState};
         foreach (var state in states)
         {
             state.Awake(this);
@@ -36,7 +37,7 @@ public class WeaponBehaviour : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        currentState = canShootState;
+        currentState = readyShootState;
         foreach (var state in states)
         {
             state.Start();

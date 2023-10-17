@@ -30,7 +30,7 @@ public class ShootCooldownState : WeaponState
         currentCooldown -= Time.deltaTime;
         if (currentCooldown <= 0)
         {
-            weapon.Transit(weapon.canShootState);
+            weapon.Transit(weapon.readyShootState);
         }
     }
     
