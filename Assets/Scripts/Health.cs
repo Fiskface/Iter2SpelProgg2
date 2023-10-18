@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,7 @@ public class Health : MonoBehaviour
     private int health;
 
     [SerializeField] private Image healthbarImage;
+    [SerializeField] private TextMeshProUGUI healthbarText;
     
     private void Start()
     {
@@ -25,6 +27,11 @@ public class Health : MonoBehaviour
     
     public void UpdateHealthbar(int currentHealth, int maxHealth)
     {
-        healthbarImage.fillAmount = (float)currentHealth / maxHealth;
+        if(healthbarImage != null)
+            healthbarImage.fillAmount = (float)currentHealth / maxHealth;
+        if (healthbarText != null)
+        {
+            healthbarText.text = $"{currentHealth} / {maxHealth}";
+        }
     }
 }
