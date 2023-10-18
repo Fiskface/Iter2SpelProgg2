@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Enemies.FlyingCreature;
 using UnityEngine;
 
 [System.Serializable]
-public class EnemyPatrolState : EnemyState
+public class EnemyFC_PatrolState : EnemyFC_State
 {
     public float speed = 3;
     
