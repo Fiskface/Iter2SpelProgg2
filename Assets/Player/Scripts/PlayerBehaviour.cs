@@ -7,6 +7,9 @@ namespace Player.Scripts
 {
     public class PlayerBehaviour : MonoBehaviour
     {
+        public float takeDamageCooldown = 1;
+        private bool canTakeDamage = true;
+        
         public MousePosSO mousePos;
     
         public PlayerIdleState idleState = new PlayerIdleState();
@@ -43,7 +46,7 @@ namespace Player.Scripts
 
         private void Awake()
         {
-            target = GetComponent<TargetBehaviour>();
+            target = GetComponentInChildren<TargetBehaviour>();
             rb = GetComponent<Rigidbody2D>();
             sr = GetComponent<SpriteRenderer>();
             health = GetComponent<Health>();
@@ -95,6 +98,35 @@ namespace Player.Scripts
             canDodge = false;
             yield return new WaitForSeconds(cooldown);
             canDodge = true;
+        }
+
+        public IEnumerator TakeDamageCooldown(float cooldown)
+        {
+            canTakeDamage = false;
+            var c = sr.color;
+            sr.color = new Color(c.r, c.g, c.b, 0.5f);
+            yield return new WaitForSeconds(cooldown);
+            canTakeDamage = true;
+            sr.color = new Color(c.r, c.g, c.b, 1);
+        }
+        
+        private void OnEnable()
+        {
+            target.hit += OnHit;
+        }
+
+        private void OnDisable()
+        {
+            target.hit -= OnHit;
+        }
+
+        private void OnHit(int damage)
+        {
+            if(canTakeDamage)
+            {
+                StartCoroutine(TakeDamageCooldown(takeDamageCooldown));
+                health.changeHealth(-damage);
+            }
         }
     }
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1564689795758654850}
   - component: {fileID: 9144252665614241829}
   - component: {fileID: 382849341266551370}
-  - component: {fileID: 1417797127206450477}
+  - component: {fileID: 8107681549183073333}
   - component: {fileID: 1564689795758654849}
   - component: {fileID: 1564689795758654848}
   - component: {fileID: 1564689795758654855}
@@ -55,6 +55,8 @@ MonoBehaviour:
     minMaxTime: {x: 3, y: 8}
   patrolState:
     speed: 3
+  chaseState:
+    speed: 4
   rb: {fileID: 0}
   sr: {fileID: 0}
   health: {fileID: 0}
@@ -71,7 +73,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allied: 0
---- !u!114 &1417797127206450477
+--- !u!114 &8107681549183073333
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -80,12 +82,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1564689795758654854}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb01ccb1d3834aa4d92ea2dc760a029d, type: 3}
+  m_Script: {fileID: 11500000, guid: 70146914133be2244b1c1561473c0202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
   healthbarImage: {fileID: 4864369771672159440}
-  healthbarText: {fileID: 0}
 --- !u!212 &1564689795758654849
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -30,6 +30,9 @@ namespace Player.Scripts
                 direction = !player.sr.flipX ? Vector2.right : Vector2.left;
             }
 
+            if(direction.x != 0)
+                player.sr.flipX = !(direction.x > 0);
+
             direction *= speed;
             player.rb.velocity = direction;
         

@@ -24,37 +24,24 @@ namespace Player.Scripts
         public override void Update()
         {
             player.FlipSprite();
-            
-            if(CheckTransitions())
-                return;
-
             player.rb.velocity = Vector2.zero;
+            
+            CheckTransitions();
         }
         
-        private bool CheckTransitions()
+        private void CheckTransitions()
         {
             //To Moving
             if (player.Direction != Vector2.zero)
             {
                 player.Transit(player.movingState);
-                return true;
             }
 
             //To dodge
-            if (Input.GetButton("Fire2"))
+            if (Input.GetButton("Fire2") && player.canDodge)
             {
-                Debug.Log(player.canDodge);
-                if (player.canDodge)
-                {
-                    Debug.Log("Hej");
-                    player.Transit(player.dodgeState);
-                }
+                player.Transit(player.dodgeState);
             }
-            {
-                
-            }
-
-            return false;
         }
     }
     

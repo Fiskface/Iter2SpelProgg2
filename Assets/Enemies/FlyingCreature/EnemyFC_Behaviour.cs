@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,22 +6,25 @@ namespace Enemies.FlyingCreature
 {
     public class EnemyFC_Behaviour : MonoBehaviour
     {
+        public int damage = 1;
+        
         private TargetBehaviour target;
         public EnemyFC_IdleState idleState = new EnemyFC_IdleState();
         public EnemyFC_PatrolState patrolState = new EnemyFC_PatrolState();
+        public EnemyFC_ChaseState chaseState = new EnemyFC_ChaseState();
 
         [HideInInspector] public Rigidbody2D rb;
         [HideInInspector] public SpriteRenderer sr;
-        [HideInInspector] public Health health;
+        [HideInInspector] public EnemyHealth health;
     
-        private GameObject player;
+        [NonSerialized] public GameObject player;
         
         private EnemyFC_State currentFcState;
         private List<EnemyFC_State> states;
 
         private void SetStates()
         {
-            states = new List<EnemyFC_State>(){idleState, patrolState};
+            states = new List<EnemyFC_State>(){idleState, patrolState, chaseState};
         }
         
         private void OnValidate()
@@ -37,7 +41,7 @@ namespace Enemies.FlyingCreature
             target = GetComponent<TargetBehaviour>();
             rb = GetComponent<Rigidbody2D>();
             sr = GetComponent<SpriteRenderer>();
-            health = GetComponent<Health>();
+            health = GetComponent<EnemyHealth>();
         
             SetStates();
             foreach (var state in states)
@@ -92,7 +96,7 @@ namespace Enemies.FlyingCreature
     
         public bool GetPlayerInLineOfSight()
         {
-            LayerMask mask = LayerMask.GetMask("Default");
+            LayerMask mask = LayerMask.GetMask("RaycastBox", "Default");
 
             var timer = Time.time;
             RaycastHit2D hit = Physics2D.Raycast(transform.position, 
@@ -102,10 +106,16 @@ namespace Enemies.FlyingCreature
             {
                 return true;
             }
-            else
+            return false;
+        }
+
+        private void OnTriggerStay2D(Collider2D other)
+        {
+            if (other.CompareTag("Player") && other.TryGetComponent<TargetBehaviour>(out TargetBehaviour playerTarget))
             {
-                return false;
+                playerTarget.hit(damage);
             }
         }
+        
     }
 }

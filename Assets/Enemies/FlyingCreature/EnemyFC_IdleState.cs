@@ -27,18 +27,29 @@ namespace Enemies.FlyingCreature
     
         public override void Update()
         {
-            if (timer <= 0)
-            {
-                enemy.Transit(enemy.patrolState);
-            }
             timer -= Time.deltaTime;
             
             enemy.rb.velocity = Vector2.zero;
+
+            CheckTransitions();
         }
 
         public override void OnHit(int damage)
         {
-        
+            enemy.Transit(enemy.chaseState);
+        }
+
+        private void CheckTransitions()
+        {
+            if (timer <= 0)
+            {
+                enemy.Transit(enemy.patrolState);
+            }
+
+            if (enemy.GetPlayerInLineOfSight() && enemy.GetDistanceToPlayer() < 8)
+            {
+                enemy.Transit(enemy.chaseState);
+            }
         }
     }
 }

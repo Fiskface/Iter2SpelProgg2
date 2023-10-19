@@ -56,19 +56,28 @@ public class EnemyFC_PatrolState : EnemyFC_State
     
     public override void Update()
     {
-        playerInLineOfSight = enemy.GetPlayerInLineOfSight();
-        
-        if (timer <= 0)
-        {
-            enemy.Transit(enemy.idleState);
-        }
         timer -= Time.deltaTime;
 
         enemy.rb.velocity = direction;
+        
+        CheckTransitions();
     }
 
     public override void OnHit(int damage)
     {
+        enemy.Transit(enemy.chaseState);
+    }
+
+    private void CheckTransitions()
+    {
+        if (timer <= 0)
+        {
+            enemy.Transit(enemy.idleState);
+        }
         
+        if (enemy.GetPlayerInLineOfSight() && enemy.GetDistanceToPlayer() < 8)
+        {
+            enemy.Transit(enemy.chaseState);
+        }
     }
 }

@@ -1,18 +1,16 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.SceneManagement;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Health : MonoBehaviour
+public class EnemyHealth : MonoBehaviour
 {
     public int maxHealth;
     private int health;
 
     [SerializeField] private Image healthbarImage;
-    [SerializeField] private TextMeshProUGUI healthbarText;
     
     private void Start()
     {
@@ -25,9 +23,9 @@ public class Health : MonoBehaviour
         health = Mathf.Clamp(health += amount, 0, maxHealth);
         UpdateHealthbar(health, maxHealth);
 
-        if (health == 0)
+        if (health <= 0)
         {
-            SceneManager.LoadScene("GameOver");
+            Destroy(gameObject);
         }
     }
     
@@ -35,9 +33,5 @@ public class Health : MonoBehaviour
     {
         if(healthbarImage != null)
             healthbarImage.fillAmount = (float)currentHealth / maxHealth;
-        if (healthbarText != null)
-        {
-            healthbarText.text = $"{currentHealth} / {maxHealth}";
-        }
     }
 }

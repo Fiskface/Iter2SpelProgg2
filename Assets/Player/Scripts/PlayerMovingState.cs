@@ -30,19 +30,17 @@ namespace Player.Scripts
             player.FlipSprite();
         
             direction = player.Direction;
-            if (CheckTransitions())
-                return;
-
             player.rb.velocity = direction * speed;
+
+            CheckTransitions();
         }
 
-        private bool CheckTransitions()
+        private void CheckTransitions()
         {
             //To Idle
             if (direction == Vector2.zero)
             {
                 player.Transit(player.idleState);
-                return true;
             }
         
             //To dodge
@@ -50,8 +48,6 @@ namespace Player.Scripts
             {
                 player.Transit(player.dodgeState);
             }
-
-            return false;
         }
     }
 }

@@ -180,7 +180,7 @@ MonoBehaviour:
   dodgeState:
     speed: 7
     dodgeCooldown: 1
-    dodgeTime: 0
+    dodgeTime: 0.5
   target: {fileID: 0}
   rb: {fileID: 0}
   sr: {fileID: 0}
