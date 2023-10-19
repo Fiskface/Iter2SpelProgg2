@@ -32,6 +32,8 @@ namespace Enemies.FlyingCreature
                 enemy.Transit(enemy.patrolState);
             }
             timer -= Time.deltaTime;
+            
+            enemy.rb.velocity = Vector2.zero;
         }
 
         public override void OnHit(int damage)

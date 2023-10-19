@@ -4960,6 +4960,10 @@ PrefabInstance:
       propertyPath: healthbarImage
       value: 
       objectReference: {fileID: 970167769}
+    - target: {fileID: 5963603689084667413, guid: df2840b64d7bf4b42a2ea2c8c6000bc3, type: 3}
+      propertyPath: dodgeState.dodgeTime
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7150609376090549958, guid: df2840b64d7bf4b42a2ea2c8c6000bc3, type: 3}
       propertyPath: m_Name
       value: Player

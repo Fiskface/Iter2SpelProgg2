@@ -44,7 +44,8 @@ public class EnemyFC_PatrolState : EnemyFC_State
         
         timer = Random.Range(1f, 4f);
 
-        enemy.rb.velocity = direction * speed;
+        direction *= speed;
+        enemy.rb.velocity = direction;
     }
 
     public override void Exit()
@@ -62,6 +63,8 @@ public class EnemyFC_PatrolState : EnemyFC_State
             enemy.Transit(enemy.idleState);
         }
         timer -= Time.deltaTime;
+
+        enemy.rb.velocity = direction;
     }
 
     public override void OnHit(int damage)

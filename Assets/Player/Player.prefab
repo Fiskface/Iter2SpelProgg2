@@ -83,7 +83,6 @@ GameObject:
   - component: {fileID: 7150609376090549963}
   - component: {fileID: 7150609376090549956}
   - component: {fileID: 5963603689084667413}
-  - component: {fileID: 7150609376090549957}
   - component: {fileID: 2088552798180413218}
   - component: {fileID: 7150609376090549962}
   - component: {fileID: 7150609376090549961}
@@ -175,25 +174,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c125a2dad354484f803758b182979a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mousePos: {fileID: 11400000, guid: b3bd06871a12b1e47867ffa0ce76ace6, type: 2}
+  movingState:
+    speed: 5
+  dodgeState:
+    speed: 7
+    dodgeCooldown: 1
+    dodgeTime: 0
   target: {fileID: 0}
   rb: {fileID: 0}
   sr: {fileID: 0}
   health: {fileID: 0}
   animator: {fileID: 0}
---- !u!114 &7150609376090549957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7150609376090549958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 311dd43c4889ae7489684c45e3205678, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  mousePos: {fileID: 11400000, guid: b3bd06871a12b1e47867ffa0ce76ace6, type: 2}
 --- !u!114 &2088552798180413218
 MonoBehaviour:
   m_ObjectHideFlags: 0
