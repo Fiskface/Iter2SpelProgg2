@@ -27,6 +27,8 @@ namespace Enemies.FlyingCreature
         public override void Update()
         {
             direction = (enemy.player.transform.position - enemy.transform.position).normalized;
+            
+            enemy.sr.flipX = direction.x < 0;
 
             enemy.rb.velocity = direction * speed;
         
