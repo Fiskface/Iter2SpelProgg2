@@ -106,7 +106,7 @@ public class GoblinBehaviour : MonoBehaviour
     
         public bool GetPlayerInLineOfSight()
         {
-            LayerMask mask = LayerMask.GetMask("RaycastBox", "Default");
+            LayerMask mask = LayerMask.GetMask("RaycastBox", "Map");
 
             var timer = Time.time;
             RaycastHit2D hit = Physics2D.Raycast(transform.position, 

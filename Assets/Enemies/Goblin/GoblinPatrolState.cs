@@ -27,7 +27,7 @@ public class GoblinPatrolState : GoblinState
             
             direction = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0).normalized;
             
-            LayerMask mask = LayerMask.GetMask("Default");
+            LayerMask mask = LayerMask.GetMask("Map");
             RaycastHit2D hit = Physics2D.Raycast(goblin.transform.position, 
                 direction, 3, mask);
 

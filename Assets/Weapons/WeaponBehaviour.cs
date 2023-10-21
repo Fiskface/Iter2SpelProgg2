@@ -8,9 +8,12 @@ public class WeaponBehaviour : MonoBehaviour
 {
     public int damage;
     public MousePosSO mousePos;
+    public GameObjectSO activeWeapon;
     public ReadyShootState readyShootState = new ReadyShootState();
     public ShootCooldownState shootCooldownState = new ShootCooldownState();
     public ReloadState reloadState = new ReloadState();
+
+    [HideInInspector] public SpriteRenderer sr;
 
     private WeaponState currentState = null;
     private List<WeaponState> states;
@@ -25,8 +28,15 @@ public class WeaponBehaviour : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        activeWeapon.gObject = gameObject;
+    }
+
     private void Awake()
     {
+        sr = GetComponent<SpriteRenderer>();
+        
         states = new List<WeaponState>(){readyShootState, shootCooldownState, reloadState};
         foreach (var state in states)
         {
@@ -64,5 +74,7 @@ public class WeaponBehaviour : MonoBehaviour
         difference = difference.normalized;
         transform.position = player.transform.position + difference * 0.5f;
         transform.up = difference;
+
+        sr.flipX = difference.x < 0;
     }
 }
