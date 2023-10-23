@@ -24,7 +24,7 @@ public class ReadyShootState : WeaponState
     
     public override void Update()
     {
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") && weapon.ammoType.value > 0)
         {
             weapon.Transit(weapon.shootCooldownState);
         }

@@ -99,6 +99,22 @@ public class GoblinBehaviour : MonoBehaviour
             health.changeHealth(-damage);
         }
 
+        public void FlipSprite(bool flipped)
+        {
+            if (flipped)
+            {
+                sr.flipX = true;
+                weapon.transform.localPosition = new Vector3(-weaponStartX, 0, 0);
+                weaponSR.flipY = true;
+            }
+            else
+            {
+                sr.flipX = false;
+                weapon.transform.localPosition = new Vector3(weaponStartX, 0, 0);
+                weaponSR.flipY = false;
+            }
+        }
+
         public float GetDistanceToPlayer()
         {
             return Vector3.Distance(transform.position, player.transform.position);

@@ -17,6 +17,9 @@ public class GoblinIdleState : GoblinState
     {
         timer = Random.Range(minMaxTime.x, minMaxTime.y);
         goblin.rb.velocity = Vector2.zero;
+
+        goblin.FlipSprite(goblin.sr.flipX);
+
     }
 
     public override void Exit()
@@ -30,6 +33,8 @@ public class GoblinIdleState : GoblinState
         timer -= Time.deltaTime;
             
         goblin.rb.velocity = Vector2.zero;
+        
+        
 
         CheckTransitions();
     }

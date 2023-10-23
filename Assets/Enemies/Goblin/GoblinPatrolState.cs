@@ -35,18 +35,8 @@ public class GoblinPatrolState : GoblinState
                 break;
         }
 
-        if (direction.x < 0)
-        {
-            goblin.sr.flipX = true;
-            goblin.weapon.transform.localPosition = new Vector3(-goblin.weaponStartX, 0, 0);
-            goblin.weaponSR.flipY = true;
-        }
-        else
-        {
-            goblin.sr.flipX = false;
-            goblin.weapon.transform.localPosition = new Vector3(goblin.weaponStartX, 0, 0);
-            goblin.weaponSR.flipY = false;
-        }
+        goblin.FlipSprite(direction.x < 0);
+        
         
         timer = Random.Range(minMaxTime.x, minMaxTime.y);
 

@@ -12,8 +12,9 @@ public class EnemyDrops : MonoBehaviour
     {
         if (Random.Range(1, 2) == 1)
         {
-            Instantiate(drops[Random.Range(0, drops.Count - 1)],
-                gameObject.transform.position, Quaternion.identity);
+            var random = Random.Range(0, drops.Count - 1);
+            Instantiate(drops[random],
+                gameObject.transform.position, drops[random].transform.rotation);
         }
     }
 }

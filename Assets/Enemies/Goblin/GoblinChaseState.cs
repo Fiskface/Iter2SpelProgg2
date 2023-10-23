@@ -29,19 +29,8 @@ public class GoblinChaseState : GoblinState
         direction = (goblin.player.transform.position - goblin.transform.position).normalized;
 
         goblin.rb.velocity = direction * speed;
-        
-        if (direction.x < 0)
-        {
-            goblin.sr.flipX = true;
-            goblin.weapon.transform.localPosition = new Vector3(-goblin.weaponStartX, 0, 0);
-            goblin.weaponSR.flipY = true;
-        }
-        else
-        {
-            goblin.sr.flipX = false;
-            goblin.weapon.transform.localPosition = new Vector3(goblin.weaponStartX, 0, 0);
-            goblin.weaponSR.flipY = false;
-        }
+
+        goblin.FlipSprite(direction.x < 0);
         
         CheckTransitions();
     }
