@@ -9,6 +9,7 @@ public class EnemyHealth : MonoBehaviour
 {
     public int maxHealth;
     private int health;
+    private EnemyDrops ed;
 
     [SerializeField] private Image healthbarImage;
     
@@ -16,6 +17,8 @@ public class EnemyHealth : MonoBehaviour
     {
         health = maxHealth;
         UpdateHealthbar(health, maxHealth);
+        if(TryGetComponent<EnemyDrops>(out EnemyDrops enemyDrops))
+            ed = enemyDrops;
     }
 
     public void changeHealth(int amount)
@@ -26,6 +29,10 @@ public class EnemyHealth : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+            if (ed != null)
+            {
+                ed.Drop();
+            }
         }
     }
     

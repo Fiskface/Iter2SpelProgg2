@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9144252665614241829}
   - component: {fileID: 382849341266551370}
   - component: {fileID: 8107681549183073333}
+  - component: {fileID: 9156333259447331837}
   - component: {fileID: 1564689795758654849}
   - component: {fileID: 1564689795758654848}
   - component: {fileID: 1564689795758654855}
@@ -89,6 +90,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 7
   healthbarImage: {fileID: 4864369771672159440}
+--- !u!114 &9156333259447331837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564689795758654854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 575c7452c6118184dae36fc755de994c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drops:
+  - {fileID: 1103114949263569825, guid: df54844631655694fab52165010c6201, type: 3}
+  - {fileID: 273352369485888473, guid: 2b331d9299e017848b322a1268db8209, type: 3}
+  - {fileID: 3637685417200546733, guid: e3a5069eeb0fe194285e4e1c21567a20, type: 3}
 --- !u!212 &1564689795758654849
 SpriteRenderer:
   m_ObjectHideFlags: 0

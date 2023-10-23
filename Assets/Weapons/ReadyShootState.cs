@@ -18,14 +18,14 @@ public class ReadyShootState : WeaponState
 
     public override void Exit()
     {
-        
+        shoot.Shoot(weapon.damage);
+        weapon.ammoType.value--;
     }
     
     public override void Update()
     {
         if (Input.GetButton("Fire1"))
         {
-            shoot.Shoot(weapon.damage);
             weapon.Transit(weapon.shootCooldownState);
         }
     }

@@ -7,6 +7,7 @@ using UnityEngine.Serialization;
 public class WeaponBehaviour : MonoBehaviour
 {
     public int damage;
+    public IntSO ammoType;
     public MousePosSO mousePos;
     public GameObjectSO activeWeapon;
     public ReadyShootState readyShootState = new ReadyShootState();

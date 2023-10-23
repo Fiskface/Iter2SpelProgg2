@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
+  ammoType: {fileID: 0}
   mousePos: {fileID: 11400000, guid: b3bd06871a12b1e47867ffa0ce76ace6, type: 2}
   activeWeapon: {fileID: 11400000, guid: f565a046d8fe48544820929a8db85ce2, type: 2}
   readyShootState:
@@ -146,9 +147,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 62364710ee9f7184a9e00658464dd991, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
