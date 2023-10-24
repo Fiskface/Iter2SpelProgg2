@@ -30,11 +30,9 @@ public class CameraController : MonoBehaviour
         Vector2 ret = mainCamera.ScreenToViewportPoint(Input.mousePosition);
         ret *= 2;
         ret -= Vector2.one;
-        float max = 0.9f;
-        if (Mathf.Abs(ret.x) > max || Mathf.Abs(ret.y) > max)
-        {
-            ret = ret.normalized;
-        }
+
+        ret = new Vector2(Mathf.Clamp(ret.x, -1, 1),
+            Mathf.Clamp(ret.y, -1, 1));
 
         return ret;
     }
@@ -59,7 +57,8 @@ public class CameraController : MonoBehaviour
     {
         shaking = true;
         shakeVector = direction;
-        shakeRandomVector = Random.Range(-0.3f, 0.3f) * magnitude * new Vector3(direction.y, -direction.x, direction.z);
+        shakeRandomVector = Random.Range(-0.3f, 0.3f) * magnitude * 
+                            new Vector3(direction.y, -direction.x, direction.z);
         shakeMag = magnitude;
         shakeTimeEnd = Time.time + length;
     }
