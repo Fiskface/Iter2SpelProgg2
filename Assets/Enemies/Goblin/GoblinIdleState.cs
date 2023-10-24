@@ -8,6 +8,8 @@ public class GoblinIdleState : GoblinState
     public Vector2 minMaxTime;
     
     private float timer;
+    private static readonly int aniRunning = Animator.StringToHash("Running");
+
     public override void Start()
     {
         base.Start();
@@ -20,11 +22,13 @@ public class GoblinIdleState : GoblinState
 
         goblin.FlipSprite(goblin.sr.flipX);
 
+        
+        goblin.animator.SetBool(aniRunning, false);
     }
 
     public override void Exit()
     {
-        
+        goblin.animator.SetBool(aniRunning, true);
     }
 
     

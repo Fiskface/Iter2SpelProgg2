@@ -50,6 +50,7 @@ public class GoblinBehaviour : MonoBehaviour
             sr = GetComponent<SpriteRenderer>();
             health = GetComponent<EnemyHealth>();
             weaponSR = weapon.GetComponent<SpriteRenderer>();
+            animator = GetComponent<Animator>();
         
             SetStates();
             foreach (var state in states)
