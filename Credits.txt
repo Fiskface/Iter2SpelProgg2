@@ -6,16 +6,3 @@ https://freesound.org/people/Samulis/sounds/209399/
 https://c1aymor3.itch.io/basic-gun-asset-pack
 https://aekae13.itch.io/16x16-dungeon-walls-reconfig
 https://o-lobster.itch.io/simple-dungeon-crawler-16x16-pixel-pack
-
-
-
-WILLIAM: Mechanim (animatorn): 
-
-PROS:
-	lätt att sätta animationer till states
-	Grafiskt inteface (gör det lätt för icke-programmerare, och potentiellt programmerare)
-
-CONS:
-	Måste lära sig animatorn
-	Jag som programmerare föredrar att läsa kod
-	
